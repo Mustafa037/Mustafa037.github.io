@@ -1,0 +1,94 @@
+/* Genel sayfa fontu ve yapısı */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navigasyon menüsü */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+nav a {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+/* İletişim Formu Konteyner Ayarları */
+.contact-container {
+    width: 600px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fefefe;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.contact-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Form Elemanları */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.group-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.group-box label {
+    display: inline;
+    font-weight: normal;
+}
+
+/* Buton Ayarları */
+.button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-submit, .btn-reset {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background-color: #007bff;
+}
+
+.btn-reset {
+    background-color: #dc3545;
+}
