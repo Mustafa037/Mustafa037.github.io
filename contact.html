@@ -3,106 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>İletişim - Mustafa Sarı</title>
-    <style>
-        /* Genel sayfa fontu ve yapısı */
-        body {
-            font-family: Arial, sans-serif;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* Navigasyon menüsü */
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            gap: 15px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #0056b3;
-            font-weight: bold;
-        }
-
-        /* --- LAB GÖREVİ CSS KODLARI --- */
-
-        /* 1. Konteyner Ayarları */
-        .contact-container {
-            width: 600px; /* Genişlik verildi [cite: 14] */
-            margin: auto; /* Sayfayı ortalamak için margin: auto kullanıldı [cite: 14] */
-            padding: 30px; /* Elemanlar kenara yapışmasın diye iç boşluk verildi [cite: 15] */
-            border: 1px solid #ddd; /* Belirgin kenarlık eklendi [cite: 16] */
-            border-radius: 8px; /* Hafif köşe yuvarlaması eklendi [cite: 16] */
-            background-color: #fefefe;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .contact-container h2 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        /* Her bir alanın kendi etiketi (label) için ayarlar */
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px; /* Altındaki elemanla arasına boşluk koyuldu */
-        }
-
-        /* 2. Çoklu Seçiciler (Giriş alanları) [cite: 22] */
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        select,
-        textarea {
-            width: 100%; /* Alanın tamamını kaplayacak şekilde ayarlandı [cite: 18] */
-            padding: 12px; /* Ferah durması için iç boşluk eklendi [cite: 19] */
-            margin-bottom: 20px; /* Altlarındaki elemanlarla arasına boşluk kondu [cite: 20] */
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* Padding'in genişliği bozmasını engeller */
-        }
-
-        /* Görseldeki gri arka planlı grup alanları (Radyo ve Checkbox için) */
-        .group-box {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-
-        .group-box label {
-            display: inline; /* Yan yana durmaları için */
-            font-weight: normal;
-        }
-
-        /* 3. Buton Ayarları */
-        .button-group {
-            display: flex;
-            gap: 15px; /* İki buton arasına boşluk */
-        }
-
-        .btn-submit, .btn-reset {
-            flex: 1; /* Butonların eşit genişlikte olması için */
-            padding: 15px 20px; /* Hem sağ-sol hem alt-üst padding verilerek büyütüldü [cite: 21] */
-            border: none; /* Kenarlık kaldırıldı [cite: 21] */
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-        }
-
-        .btn-submit {
-            background-color: #007bff; /* Arka plan rengi değiştirildi (Mavi) [cite: 21] */
-        }
-
-        .btn-reset {
-            background-color: #dc3545; /* Görseldeki Temizle butonu için Kırmızı */
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>İletişim</h1>
@@ -165,7 +66,8 @@
                 <textarea id="mesaj" name="mesaj" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
 
                 <div class="button-group">
-                    <button type="submit" class="btn-submit">Gönder</button> <button type="reset" class="btn-reset">Temizle</button>
+                    <button type="submit" class="btn-submit">Gönder</button> 
+                    <button type="reset" class="btn-reset">Temizle</button>
                 </div>
             </form>
         </div>
@@ -176,4 +78,3 @@
     </footer>
 </body>
 </html>
-
