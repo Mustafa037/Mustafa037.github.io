@@ -1,0 +1,61 @@
+<head>
+    <title>Mustafa Sarı</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<main>
+    <a href="index.html">Ana sayfaya geri dönün</a>
+
+    <div class="contact-container">
+        <h2>Detaylı İletişim Formu</h2>
+        <form action="#">
+            <label for="name">Ad Soyad:</label>
+            <input type="text" id="name" name="name" placeholder="Örn: Asaf Karataş" required>
+
+            <label for="email">E-posta Adresi:</label>
+            <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
+
+            <label for="password">Başvuru Takip Şifresi:</label>
+            <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+
+            <label>İletişim Tercihi:</label>
+            <div class="radio-group">
+                <input type="radio" id="email-pref" name="contact-pref" value="email">
+                <label for="email-pref" style="display:inline;">Bana e-posta ile ulaşın</label><br>
+                <input type="radio" id="phone-pref" name="contact-pref" value="phone">
+                <label for="phone-pref" style="display:inline;">Bana telefonla ulaşın</label>
+            </div>
+            <br>
+
+            <label>İlgi Alanları / Yetenekler:</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="html" name="skills" value="html">
+                <label for="html" style="display:inline;">HTML</label><br>
+                <input type="checkbox" id="css" name="skills" value="css">
+                <label for="css" style="display:inline;">CSS</label><br>
+                <input type="checkbox" id="algo" name="skills" value="algo">
+                <label for="algo" style="display:inline;">Algoritma</label>
+            </div>
+            <br>
+
+            <label for="subject">Konu:</label>
+            <select id="subject" name="subject">
+                <option value="">Lütfen bir konu seçin...</option>
+                <option value="is-teklifi">İş Teklifi</option>
+                <option value="soru">Soru</option>
+                <option value="geri-bildirim">Geri Bildirim</option>
+            </select>
+
+            <label for="file">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+            <input type="file" id="file" name="file">
+
+            <label for="message">Mesajınız:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
+
+            <div class="button-group">
+                <button type="submit" class="btn-submit">Gönder</button>
+                <button type="reset" class="btn-reset">Temizle</button>
+            </div>
+        </form>
+    </div>
+</main>
