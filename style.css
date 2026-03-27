@@ -94,29 +94,32 @@ textarea {
 }
 
 /* =========================================
-   FLEXBOX ÖDEVİ (LAB) CSS KODLARI 
+   FLEXBOX ÖDEVİ (LAB) CSS KODLARI - GÜNCELLENDİ
    ========================================= */
 
-/* Kutu modeli ayarı (Taşmaları önlemek için kritik) */
 .fb-wrapper * {
     box-sizing: border-box;
     margin: 0;
 }
 
-/* Sayfanın varsayılan boşluklarını sıfırlıyoruz */
 .fb-body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Sığmazsa taşmayı gizler */
+    /* Body'deki overflow gizlemesini kaldırdık ki genel sayfa kayabilsin */
 }
 
 /* Genel Kapsayıcı: 100vh ve Flex Column [cite: 31, 33] */
 .fb-wrapper {
     display: flex;
-    flex-direction: column; /* Dikey yerleşim  */
-    height: 100vh; /* Yükseklik vh ile verildi [cite: 74] */
+    flex-direction: column; 
+    height: 100vh; 
+    overflow-y: auto; /* Sığmayan fazladan bölümler için kaydırma çubuğu hayat kurtarır */
     background-color: #f4f4f9;
-    font-family: Arial, sans-serif;
+}
+
+/* TÜM BÖLÜMLERİN EZİLMESİNİ ENGELLİYORUZ */
+.fb-navbar, .fb-hero, .fb-cards, .fb-grow-section, .fb-footer {
+    flex-shrink: 0; 
 }
 
 /* Genel Buton Stili */
@@ -132,10 +135,10 @@ textarea {
 
 /* 1) Navbar (Üst Menü) [cite: 35] */
 .fb-navbar {
-    height: 10vh; /* Yükseklik: 10vh [cite: 37] */
-    display: flex; /* Flex kullanıldı [cite: 69] */
-    justify-content: space-between; /* Yatay hizalama [cite: 39] */
-    align-items: center; /* Dikey hizalama [cite: 40] */
+    height: 10vh; /* [cite: 37] */
+    display: flex; 
+    justify-content: space-between; /* [cite: 39] */
+    align-items: center; /* [cite: 40] */
     padding: 0 40px;
     background-color: #e8e8ed;
     border-bottom: 1px solid #ccc;
@@ -154,11 +157,11 @@ textarea {
 
 /* 2) Hero (İki Kolon) [cite: 41] */
 .fb-hero {
-    height: 30vh; /* Yükseklik: 30vh [cite: 42] */
+    height: 30vh; /* [cite: 42] */
     display: flex;
-    flex-direction: row; /* Flex row kullanıldı [cite: 45, 72] */
-    justify-content: space-between; /* İki yana yaslama [cite: 46] */
-    align-items: stretch; /* Görsel kutusu esnesin diye [cite: 47] */
+    flex-direction: row; /* [cite: 45] */
+    justify-content: space-between; /* [cite: 46] */
+    align-items: stretch; /* [cite: 47] */
     padding: 20px 40px;
 }
 
@@ -181,15 +184,16 @@ textarea {
 
 /* 3) Kartlar Bölümü [cite: 48] */
 .fb-cards {
-    height: 30vh; /* Yükseklik: 30vh [cite: 49] */
+    height: 30vh; /*  */
     display: flex;
-    flex-wrap: wrap; /* Sığmazsa alt satıra geçiş [cite: 50, 53] */
-    gap: 15px; /* Kartlar arası boşluk [cite: 54] */
+    flex-wrap: wrap; /* [cite: 53] */
+    gap: 15px; /* [cite: 54] */
     padding: 10px 40px;
+    overflow-y: auto; /* Kartların üst üste binmesini engelleyen kritik kod */
 }
 
 .fb-cards .card {
-    flex: 1 1 calc(33.333% - 15px); /* 3'lü kolon yapısı (toplam 6 kart) */
+    flex: 1 1 calc(33.333% - 15px);
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -201,9 +205,9 @@ textarea {
 
 /* 4) Flex Grow Uygulama [cite: 55] */
 .fb-grow-section {
-    height: 20vh; /* Yükseklik: 20vh [cite: 56] */
+    height: 20vh; /* [cite: 56] */
     display: flex;
-    align-items: stretch; /* Yükseklik esnemesi [cite: 61] */
+    align-items: stretch; /* [cite: 61] */
     gap: 15px;
     padding: 10px 40px;
 }
@@ -218,17 +222,16 @@ textarea {
     align-items: center;
 }
 
-/* Büyüme (Flex-Grow) Oranları [cite: 73] */
-.box1 { flex-grow: 1; background-color: #e1edf7; } /* Kutu1: flex-grow: 1 [cite: 58] */
-.box2 { flex-grow: 2; background-color: #e5f5e0; } /* Kutu2: flex-grow: 2 [cite: 59] */
-.box3 { flex-grow: 1; background-color: #fbe5cd; } /* Kutu3: flex-grow: 1 [cite: 60] */
+.box1 { flex-grow: 1; background-color: #e1edf7; } /* [cite: 58] */
+.box2 { flex-grow: 2; background-color: #e5f5e0; } /* [cite: 59] */
+.box3 { flex-grow: 1; background-color: #fbe5cd; } /* [cite: 60] */
 
 /* 5) Footer [cite: 62] */
 .fb-footer {
-    height: 10vh; /* Yükseklik: 10vh [cite: 63] */
+    height: 10vh; /* [cite: 63] */
     display: flex;
-    justify-content: center; /* Ortala [cite: 64, 65] */
-    align-items: center; /* Ortala [cite: 64, 66] */
+    justify-content: center; /* [cite: 65] */
+    align-items: center; /* [cite: 66] */
     background-color: #e8e8ed;
     border-top: 1px solid #ccc;
 }
