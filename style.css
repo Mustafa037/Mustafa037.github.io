@@ -235,3 +235,170 @@ textarea {
     background-color: #e8e8ed;
     border-top: 1px solid #ccc;
 }
+
+
+/* =========================================
+   LAB: CSS POSITION KODLARI
+   ========================================= */
+
+/* Sayfa genel yapısı (Kaydırmayı test etmek için yükseklik verildi) */
+.pos-body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f5f7;
+    font-family: Arial, sans-serif;
+    min-height: 120vh; /* Scroll çıkması ve Fixed öğelerin test edilebilmesi için */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+}
+
+/* --- FIXED KONUMLANDIRMA --- */
+.pos-btn-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #2b5fe3;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 100;
+    cursor: pointer; /* 1. Cursor Değişimi */
+    transition: background-color 0.3s, transform 0.2s; /* 1. Etkileşim: Transition */
+}
+
+.pos-btn-home:hover {
+    background-color: #1a42a8;
+    transform: scale(1.05); /* Hover Efekti */
+}
+
+.pos-btn-help {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #8338ec;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    z-index: 100;
+    cursor: help; /* 2. Cursor Değişimi */
+    box-shadow: 0 4px 15px rgba(131, 56, 236, 0.4);
+    animation: bouncePulse 3s infinite; /* 2. Etkileşim: Keyframes Animasyonu */
+}
+
+.pos-btn-help:active {
+    transform: scale(0.9); /* Active Efekti */
+}
+
+/* Sürekli tekrar eden dikkat çekici zıplama animasyonu */
+@keyframes bouncePulse {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* --- RELATIVE KAPSAYICI --- */
+.pos-card {
+    position: relative; /* ÇOK ÖNEMLİ: Absolute öğeler bu kutuya göre hizalanacak */
+    width: 550px;
+    background: linear-gradient(135deg, #e0e5ff, #f3ebff);
+    border-radius: 16px;
+    padding: 50px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden; /* Dairenin dışarı taşmasını engeller */
+}
+
+.pos-card h2 {
+    font-size: 26px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10; /* Yazılar dairenin üstünde kalsın diye */
+}
+
+.pos-card p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    position: relative;
+    z-index: 10; 
+}
+
+/* --- ABSOLUTE KONUMLANDIRMA --- */
+.pos-badge {
+    position: absolute;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    z-index: 20;
+    cursor: crosshair; /* 3. Cursor Değişimi */
+    transition: transform 0.3s;
+}
+
+.pos-badge:hover {
+    transform: translateY(-3px); /* Hover Animasyonu */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.badge-free {
+    top: 20px;
+    left: 20px;
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.badge-date {
+    top: 20px;
+    right: 20px;
+    background-color: #d1f5da;
+    color: #0f5132;
+}
+
+.badge-register {
+    bottom: 20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* Tasarımdaki şeffaf büyük daire (Absolute) */
+.pos-circle {
+    position: absolute;
+    bottom: -60px;
+    right: -40px;
+    width: 250px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    z-index: 1; /* En alt katmanda olacak */
+}
+
+/* Dairenin üzerine binen bilgi kutusu (Absolute) */
+.pos-location {
+    position: absolute;
+    bottom: 80px;
+    right: 40px;
+    background-color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    z-index: 30; /* Z-INDEX ÖRNEĞİ: Dairenin(1) üstünde olacak */
+    cursor: wait; /* 4. Cursor Değişimi */
+}
+
+/* Footer ayarları */
+.pos-footer {
+    margin-top: 60px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+}
