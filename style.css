@@ -1,24 +1,36 @@
-/* Genel sayfa fontu ve yapısı */
+/* =========================================
+   GENEL SİTE AYARLARI
+   ========================================= */
 body {
     font-family: Arial, sans-serif;
     color: #333;
     line-height: 1.6;
+    margin: 20px;
 }
 
-/* Navigasyon menüsü */
 nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
     gap: 15px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
 }
+
 nav a {
     text-decoration: none;
     color: #0056b3;
     font-weight: bold;
 }
 
-/* İletişim Formu Konteyner Ayarları */
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   İLETİŞİM FORMU (contact.html) KODLARI
+   ========================================= */
 .contact-container {
     width: 600px;
     margin: auto;
@@ -36,18 +48,13 @@ nav a {
     margin-bottom: 25px;
 }
 
-/* Form Elemanları */
-label {
+.contact-container label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-select,
-textarea {
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -68,7 +75,6 @@ textarea {
     font-weight: normal;
 }
 
-/* Buton Ayarları */
 .button-group {
     display: flex;
     gap: 15px;
@@ -85,18 +91,12 @@ textarea {
     cursor: pointer;
 }
 
-.btn-submit {
-    background-color: #007bff;
-}
-
-.btn-reset {
-    background-color: #dc3545;
-}
+.btn-submit { background-color: #007bff; }
+.btn-reset { background-color: #dc3545; }
 
 /* =========================================
-   FLEXBOX ÖDEVİ (LAB) CSS KODLARI - GÜNCELLENDİ
+   FLEXBOX ÖDEVİ (flexbox.html) KODLARI
    ========================================= */
-
 .fb-wrapper * {
     box-sizing: border-box;
     margin: 0;
@@ -105,24 +105,20 @@ textarea {
 .fb-body {
     margin: 0;
     padding: 0;
-    /* Body'deki overflow gizlemesini kaldırdık ki genel sayfa kayabilsin */
 }
 
-/* Genel Kapsayıcı: 100vh ve Flex Column [cite: 31, 33] */
 .fb-wrapper {
     display: flex;
     flex-direction: column; 
     height: 100vh; 
-    overflow-y: auto; /* Sığmayan fazladan bölümler için kaydırma çubuğu hayat kurtarır */
+    overflow-y: auto; 
     background-color: #f4f4f9;
 }
 
-/* TÜM BÖLÜMLERİN EZİLMESİNİ ENGELLİYORUZ */
 .fb-navbar, .fb-hero, .fb-cards, .fb-grow-section, .fb-footer {
     flex-shrink: 0; 
 }
 
-/* Genel Buton Stili */
 .fb-btn {
     padding: 8px 16px;
     background-color: #799bea;
@@ -133,35 +129,25 @@ textarea {
     margin-top: 10px;
 }
 
-/* 1) Navbar (Üst Menü) [cite: 35] */
 .fb-navbar {
-    height: 10vh; /* [cite: 37] */
+    height: 10vh; 
     display: flex; 
-    justify-content: space-between; /* [cite: 39] */
-    align-items: center; /* [cite: 40] */
+    justify-content: space-between; 
+    align-items: center; 
     padding: 0 40px;
     background-color: #e8e8ed;
     border-bottom: 1px solid #ccc;
 }
 
-.fb-navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
+.fb-navbar .logo { font-size: 24px; font-weight: bold; }
+.fb-nav-links a { text-decoration: none; color: #333; margin-left: 20px; }
 
-.fb-nav-links a {
-    text-decoration: none;
-    color: #333;
-    margin-left: 20px;
-}
-
-/* 2) Hero (İki Kolon) [cite: 41] */
 .fb-hero {
-    height: 30vh; /* [cite: 42] */
+    height: 30vh; 
     display: flex;
-    flex-direction: row; /* [cite: 45] */
-    justify-content: space-between; /* [cite: 46] */
-    align-items: stretch; /* [cite: 47] */
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: stretch; 
     padding: 20px 40px;
 }
 
@@ -182,14 +168,13 @@ textarea {
     border-radius: 8px;
 }
 
-/* 3) Kartlar Bölümü [cite: 48] */
 .fb-cards {
-    height: 30vh; /*  */
+    height: 30vh; 
     display: flex;
-    flex-wrap: wrap; /* [cite: 53] */
-    gap: 15px; /* [cite: 54] */
+    flex-wrap: wrap; 
+    gap: 15px; 
     padding: 10px 40px;
-    overflow-y: auto; /* Kartların üst üste binmesini engelleyen kritik kod */
+    overflow-y: auto; 
 }
 
 .fb-cards .card {
@@ -203,11 +188,10 @@ textarea {
     justify-content: space-between;
 }
 
-/* 4) Flex Grow Uygulama [cite: 55] */
 .fb-grow-section {
-    height: 20vh; /* [cite: 56] */
+    height: 20vh; 
     display: flex;
-    align-items: stretch; /* [cite: 61] */
+    align-items: stretch; 
     gap: 15px;
     padding: 10px 40px;
 }
@@ -222,39 +206,34 @@ textarea {
     align-items: center;
 }
 
-.box1 { flex-grow: 1; background-color: #e1edf7; } /* [cite: 58] */
-.box2 { flex-grow: 2; background-color: #e5f5e0; } /* [cite: 59] */
-.box3 { flex-grow: 1; background-color: #fbe5cd; } /* [cite: 60] */
+.box1 { flex-grow: 1; background-color: #e1edf7; } 
+.box2 { flex-grow: 2; background-color: #e5f5e0; } 
+.box3 { flex-grow: 1; background-color: #fbe5cd; } 
 
-/* 5) Footer [cite: 62] */
 .fb-footer {
-    height: 10vh; /* [cite: 63] */
+    height: 10vh; 
     display: flex;
-    justify-content: center; /* [cite: 65] */
-    align-items: center; /* [cite: 66] */
+    justify-content: center; 
+    align-items: center; 
     background-color: #e8e8ed;
     border-top: 1px solid #ccc;
 }
 
-
 /* =========================================
-   LAB: CSS POSITION KODLARI
+   POSITION LAB (lab-position.html) KODLARI
    ========================================= */
-
-/* Sayfa genel yapısı (Kaydırmayı test etmek için yükseklik verildi) */
 .pos-body {
     margin: 0;
     padding: 0;
     background-color: #f4f5f7;
     font-family: Arial, sans-serif;
-    min-height: 120vh; /* Scroll çıkması ve Fixed öğelerin test edilebilmesi için */
+    min-height: 120vh; 
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 100px;
 }
 
-/* --- FIXED KONUMLANDIRMA --- */
 .pos-btn-home {
     position: fixed;
     top: 20px;
@@ -266,13 +245,13 @@ textarea {
     text-decoration: none;
     font-weight: bold;
     z-index: 100;
-    cursor: pointer; /* 1. Cursor Değişimi */
-    transition: background-color 0.3s, transform 0.2s; /* 1. Etkileşim: Transition */
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 .pos-btn-home:hover {
     background-color: #1a42a8;
-    transform: scale(1.05); /* Hover Efekti */
+    transform: scale(1.05); 
 }
 
 .pos-btn-help {
@@ -286,31 +265,29 @@ textarea {
     border-radius: 30px;
     font-weight: bold;
     z-index: 100;
-    cursor: help; /* 2. Cursor Değişimi */
+    cursor: help; 
     box-shadow: 0 4px 15px rgba(131, 56, 236, 0.4);
-    animation: bouncePulse 3s infinite; /* 2. Etkileşim: Keyframes Animasyonu */
+    animation: bouncePulse 3s infinite; 
 }
 
 .pos-btn-help:active {
-    transform: scale(0.9); /* Active Efekti */
+    transform: scale(0.9); 
 }
 
-/* Sürekli tekrar eden dikkat çekici zıplama animasyonu */
 @keyframes bouncePulse {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
     40% { transform: translateY(-10px); }
     60% { transform: translateY(-5px); }
 }
 
-/* --- RELATIVE KAPSAYICI --- */
 .pos-card {
-    position: relative; /* ÇOK ÖNEMLİ: Absolute öğeler bu kutuya göre hizalanacak */
+    position: relative; 
     width: 550px;
     background: linear-gradient(135deg, #e0e5ff, #f3ebff);
     border-radius: 16px;
     padding: 50px 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    overflow: hidden; /* Dairenin dışarı taşmasını engeller */
+    overflow: hidden; 
 }
 
 .pos-card h2 {
@@ -318,7 +295,7 @@ textarea {
     margin-top: 10px;
     margin-bottom: 20px;
     position: relative;
-    z-index: 10; /* Yazılar dairenin üstünde kalsın diye */
+    z-index: 10; 
 }
 
 .pos-card p {
@@ -329,7 +306,6 @@ textarea {
     z-index: 10; 
 }
 
-/* --- ABSOLUTE KONUMLANDIRMA --- */
 .pos-badge {
     position: absolute;
     padding: 8px 14px;
@@ -337,37 +313,19 @@ textarea {
     font-weight: bold;
     font-size: 13px;
     z-index: 20;
-    cursor: crosshair; /* 3. Cursor Değişimi */
+    cursor: crosshair; 
     transition: transform 0.3s;
 }
 
 .pos-badge:hover {
-    transform: translateY(-3px); /* Hover Animasyonu */
+    transform: translateY(-3px); 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.badge-free {
-    top: 20px;
-    left: 20px;
-    background-color: #fff3cd;
-    color: #856404;
-}
+.badge-free { top: 20px; left: 20px; background-color: #fff3cd; color: #856404; }
+.badge-date { top: 20px; right: 20px; background-color: #d1f5da; color: #0f5132; }
+.badge-register { bottom: 20px; right: 20px; background-color: #f8d7da; color: #842029; }
 
-.badge-date {
-    top: 20px;
-    right: 20px;
-    background-color: #d1f5da;
-    color: #0f5132;
-}
-
-.badge-register {
-    bottom: 20px;
-    right: 20px;
-    background-color: #f8d7da;
-    color: #842029;
-}
-
-/* Tasarımdaki şeffaf büyük daire (Absolute) */
 .pos-circle {
     position: absolute;
     bottom: -60px;
@@ -376,10 +334,9 @@ textarea {
     height: 250px;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    z-index: 1; /* En alt katmanda olacak */
+    z-index: 1; 
 }
 
-/* Dairenin üzerine binen bilgi kutusu (Absolute) */
 .pos-location {
     position: absolute;
     bottom: 80px;
@@ -391,11 +348,10 @@ textarea {
     font-weight: bold;
     color: #333;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    z-index: 30; /* Z-INDEX ÖRNEĞİ: Dairenin(1) üstünde olacak */
-    cursor: wait; /* 4. Cursor Değişimi */
+    z-index: 30; 
+    cursor: wait; 
 }
 
-/* Footer ayarları */
 .pos-footer {
     margin-top: 60px;
     font-size: 14px;
