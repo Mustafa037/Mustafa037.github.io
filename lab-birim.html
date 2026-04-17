@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Birim Dönüştürücü - Mustafa Sarı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="lab-position.html">Position</a></li>
+            <li><a href="lab-not.html">Not Hesaplama</a></li>
+            <li><a href="lab-birim.html">Birim Çeviri</a></li>
+        </ul>
+    </nav>
+
+    <main class="js-lab-container">
+        <section class="js-card">
+            <h2>Birim Dönüştürücü</h2>
+            
+            <div class="form-group">
+                <label>Değer Giriniz:</label>
+                <input type="number" id="donusumDeger" placeholder="Örn: 50">
+            </div>
+            <div class="form-group">
+                <label>Dönüşüm Tipi:</label>
+                <select id="donusumTipi">
+                    <option value="cToF">Celsius -> Fahrenheit</option>
+                    <option value="mToKm">Metre -> Kilometre</option>
+                    <option value="kgToG">Kilogram -> Gram</option>
+                </select>
+            </div>
+            
+            <button class="js-btn btn-blue" onclick="hesaplaDonusum()">Hesapla</button>
+            
+            <div id="donusumSonuc" class="result-box green-bg hidden">
+                <h4>Sonuç: <span id="sonucDeger"></span></h4>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2026 Mustafa Sarı | Web Programlama Dersi</p>
+    </footer>
+
+    <script>
+        function hesaplaDonusum() {
+            const deger = parseFloat(document.getElementById('donusumDeger').value);
+            const tip = document.getElementById('donusumTipi').value;
+
+            if (isNaN(deger)) {
+                alert("Lütfen dönüştürülecek geçerli bir sayı gir!");
+                return;
+            }
+
+            let sonuc = 0;
+            
+            if (tip === "cToF") {
+                sonuc = (deger * 9/5) + 32;
+            } else if (tip === "mToKm") {
+                sonuc = deger / 1000;
+            } else if (tip === "kgToG") {
+                sonuc = deger * 1000;
+            }
+
+            document.getElementById('sonucDeger').innerText = sonuc.toLocaleString(); 
+            document.getElementById('donusumSonuc').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
