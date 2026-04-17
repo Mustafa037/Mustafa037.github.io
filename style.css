@@ -358,3 +358,291 @@ input[type="text"], input[type="email"], input[type="password"], select, textare
     color: #777;
     text-align: center;
 }
+
+Harika, CSS'in görsel dünyasından çıkıp JavaScript'in beyin yakan mantık dünyasına hoş geldin mühendis! Bu ödev, web sayfanı "sadece görünen bir tasarım" olmaktan çıkarıp "arkada hesaplamalar yapan bir yazılıma" dönüştürecek ilk adımdır.
+
+Aynı repository içinde düzeni bozmadan ilerlemek için bu iki uygulamayı tek bir **`lab-js.html`** dosyasında toplayacağız. Tasarım ayarlarını ise yine sadık dostumuz `style.css` dosyamızın en altına ekleyeceğiz.
+
+İşte adım adım yapman gerekenler:
+
+### 1. Menüleri Güncelle (Tüm Sayfalarda)
+Eski sayfalarında (`index.html`, `about.html`, vb.) bulunan `<nav>` menüsüne yeni JS laboratuvarının linkini eklemeyi unutma:
+```html
+<li><a href="lab-js.html">JS Lab</a></li>
+```
+
+---
+
+### 2. Yeni Dosya: `lab-js.html`
+Bilgisayarında **`lab-js.html`** adında yeni bir dosya oluştur. HTML arayüzünü ve bu arayüzün arkasında hesaplama yapan JavaScript (`<script>`) kodlarını bu dosyanın içine gömdüm. Kodun en altına bakarsan JS mantığını görebilirsin.
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Lab - Mustafa Sarı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="lab-position.html">Position</a></li>
+            <li><a href="lab-js.html">JS Lab</a></li>
+        </ul>
+    </nav>
+
+    <main class="js-lab-container">
+        
+        <section class="js-card">
+            <h2>Öğrenci Not Hesaplama</h2>
+            
+            <div class="form-group">
+                <input type="text" id="ogrAd" placeholder="Örn: Filiz Akın">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ogrVize" placeholder="Vize Notu">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ogrFinal" placeholder="Final Notu">
+            </div>
+            
+            <button class="js-btn btn-gray" onclick="hesaplaNot()">Hesapla</button>
+            
+            <div id="notSonuc" class="result-box gray-bg hidden">
+                <h3 id="sonucAd"></h3>
+                <p>Ortalama: <span id="sonucOrt"></span></p>
+                <p>Harf Notu: <span id="sonucHarf"></span></p>
+                <p>Durum: <span id="sonucDurum"></span></p>
+            </div>
+        </section>
+
+        <section class="js-card">
+            <h2>Birim Dönüştürücü</h2>
+            
+            <div class="form-group">
+                <label>Değer Giriniz:</label>
+                <input type="number" id="donusumDeger" placeholder="Örn: 50">
+            </div>
+            <div class="form-group">
+                <label>Dönüşüm Tipi:</label>
+                <select id="donusumTipi">
+                    <option value="cToF">Celsius -> Fahrenheit</option>
+                    <option value="mToKm">Metre -> Kilometre</option>
+                    <option value="kgToG">Kilogram -> Gram</option>
+                </select>
+            </div>
+            
+            <button class="js-btn btn-blue" onclick="hesaplaDonusum()">Hesapla</button>
+            
+            <div id="donusumSonuc" class="result-box green-bg hidden">
+                <h4>Sonuç: <span id="sonucDeger"></span></h4>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>2026 Mustafa Sarı | Web Programlama Dersi - JS Lab</p>
+    </footer>
+
+    <script>
+        // --- Uygulama 1: Not Hesaplama Mantığı ---
+        function hesaplaNot() {
+            // Inputlardan değerleri alıyoruz
+            const ad = document.getElementById('ogrAd').value;
+            const vize = parseFloat(document.getElementById('ogrVize').value);
+            const final = parseFloat(document.getElementById('ogrFinal').value);
+
+            // Boş bırakılan alan var mı kontrolü
+            if (!ad || isNaN(vize) || isNaN(final)) {
+                alert("Kral, lütfen tüm alanları eksiksiz doldur!");
+                return; // Hata varsa işlemi durdur
+            }
+
+            // Matematiksel hesaplama (Vize %40, Final %60)
+            const ortalama = (vize * 0.4) + (final * 0.6);
+            let harf = "";
+            
+            // Harf notu baremleri (Klasik üniversite sistemi)
+            if (ortalama >= 90) harf = "AA";
+            else if (ortalama >= 85) harf = "BA";
+            else if (ortalama >= 80) harf = "BB";
+            else if (ortalama >= 75) harf = "CB";
+            else if (ortalama >= 70) harf = "CC";
+            else if (ortalama >= 65) harf = "DC";
+            else if (ortalama >= 60) harf = "DD";
+            else if (ortalama >= 50) harf = "FD";
+            else harf = "FF";
+
+            // Ternary operatörü ile Geçti/Kaldı durumu
+            const durum = ortalama >= 50 ? "Geçti" : "Kaldı";
+
+            // Hesaplanan değerleri HTML içindeki <span> etiketlerine yazdırıyoruz
+            document.getElementById('sonucAd').innerText = ad;
+            document.getElementById('sonucOrt').innerText = ortalama.toFixed(2); // Virgülden sonra 2 hane
+            document.getElementById('sonucHarf').innerText = harf;
+            document.getElementById('sonucDurum').innerText = durum;
+            
+            // Gizli olan sonuç kutusunu görünür yapıyoruz
+            document.getElementById('notSonuc').classList.remove('hidden');
+        }
+
+        // --- Uygulama 2: Birim Dönüştürücü Mantığı ---
+        function hesaplaDonusum() {
+            const deger = parseFloat(document.getElementById('donusumDeger').value);
+            const tip = document.getElementById('donusumTipi').value;
+
+            if (isNaN(deger)) {
+                alert("Lütfen dönüştürülecek geçerli bir sayı gir!");
+                return;
+            }
+
+            let sonuc = 0;
+            
+            // Seçilen tipe göre işlem yap
+            if (tip === "cToF") {
+                sonuc = (deger * 9/5) + 32;
+            } else if (tip === "mToKm") {
+                sonuc = deger / 1000;
+            } else if (tip === "kgToG") {
+                sonuc = deger * 1000;
+            }
+
+            // Sonucu HTML'e yazdır ve kutuyu göster
+            document.getElementById('sonucDeger').innerText = sonuc.toLocaleString(); 
+            document.getElementById('donusumSonuc').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+```
+
+---
+
+### 3. `style.css` Dosyasına Eklenecekler
+Hocanın attığı ekran görüntüsündeki o sade ve temiz görünümleri, açık yeşil sonuç kutularını vs. elde etmek için mevcut **`style.css` dosyanın en altına** şu kodları yapıştır:
+
+```css
+
+
+
+
+               
+               
+   /* =========================================
+   JAVASCRIPT LAB (lab-js.html) KODLARI
+   ========================================= */
+
+               
+.js-lab-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Kartlar arası boşluk */
+    padding: 40px 20px;
+    background-color: #ffffff;
+}
+
+.js-card {
+    background: #ffffff;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.js-card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #111;
+}
+
+.js-card .form-group {
+    margin-bottom: 15px;
+}
+
+.js-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+.js-card input, .js-card select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Taşmaları önler */
+}
+
+/* Buton Tasarımları */
+.js-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transition: background-color 0.2s;
+}
+
+.btn-gray {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #dcdcdc;
+}
+
+.btn-gray:hover { background-color: #e2e2e2; }
+
+.btn-blue {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-blue:hover { background-color: #0056b3; }
+
+/* Sonuç Kutuları Tasarımı */
+.result-box {
+    padding: 20px;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.result-box h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.result-box p { margin: 5px 0; color: #333; }
+
+.gray-bg { background-color: #f5f5f5; }
+
+.green-bg {
+    background-color: #d1e7dd; /* Görseldeki açık yeşil */
+    color: #0f5132;
+    text-align: center;
+}
+
+.green-bg h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Javascript ile kutuyu gizleyip göstermek için kritik class */
+.hidden { display: none !important; }
+```
