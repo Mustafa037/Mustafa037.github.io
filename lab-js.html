@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Lab - Mustafa Sarı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="lab-position.html">Position</a></li>
+            <li><a href="lab-js.html">JS Lab</a></li>
+        </ul>
+    </nav>
+
+    <main class="js-lab-container">
+        
+        <section class="js-card">
+            <h2>Öğrenci Not Hesaplama</h2>
+            
+            <div class="form-group">
+                <input type="text" id="ogrAd" placeholder="Örn: Filiz Akın">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ogrVize" placeholder="Vize Notu">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ogrFinal" placeholder="Final Notu">
+            </div>
+            
+            <button class="js-btn btn-gray" onclick="hesaplaNot()">Hesapla</button>
+            
+            <div id="notSonuc" class="result-box gray-bg hidden">
+                <h3 id="sonucAd"></h3>
+                <p>Ortalama: <span id="sonucOrt"></span></p>
+                <p>Harf Notu: <span id="sonucHarf"></span></p>
+                <p>Durum: <span id="sonucDurum"></span></p>
+            </div>
+        </section>
+
+        <section class="js-card">
+            <h2>Birim Dönüştürücü</h2>
+            
+            <div class="form-group">
+                <label>Değer Giriniz:</label>
+                <input type="number" id="donusumDeger" placeholder="Örn: 50">
+            </div>
+            <div class="form-group">
+                <label>Dönüşüm Tipi:</label>
+                <select id="donusumTipi">
+                    <option value="cToF">Celsius -> Fahrenheit</option>
+                    <option value="mToKm">Metre -> Kilometre</option>
+                    <option value="kgToG">Kilogram -> Gram</option>
+                </select>
+            </div>
+            
+            <button class="js-btn btn-blue" onclick="hesaplaDonusum()">Hesapla</button>
+            
+            <div id="donusumSonuc" class="result-box green-bg hidden">
+                <h4>Sonuç: <span id="sonucDeger"></span></h4>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>2026 Mustafa Sarı | Web Programlama Dersi - JS Lab</p>
+    </footer>
+
+    <script>
+        // --- Uygulama 1: Not Hesaplama Mantığı ---
+        function hesaplaNot() {
+            // Inputlardan değerleri alıyoruz
+            const ad = document.getElementById('ogrAd').value;
+            const vize = parseFloat(document.getElementById('ogrVize').value);
+            const final = parseFloat(document.getElementById('ogrFinal').value);
+
+            // Boş bırakılan alan var mı kontrolü
+            if (!ad || isNaN(vize) || isNaN(final)) {
+                alert("Kral, lütfen tüm alanları eksiksiz doldur!");
+                return; // Hata varsa işlemi durdur
+            }
+
+            // Matematiksel hesaplama (Vize %40, Final %60)
+            const ortalama = (vize * 0.4) + (final * 0.6);
+            let harf = "";
+            
+            // Harf notu baremleri (Klasik üniversite sistemi)
+            if (ortalama >= 90) harf = "AA";
+            else if (ortalama >= 85) harf = "BA";
+            else if (ortalama >= 80) harf = "BB";
+            else if (ortalama >= 75) harf = "CB";
+            else if (ortalama >= 70) harf = "CC";
+            else if (ortalama >= 65) harf = "DC";
+            else if (ortalama >= 60) harf = "DD";
+            else if (ortalama >= 50) harf = "FD";
+            else harf = "FF";
+
+            // Ternary operatörü ile Geçti/Kaldı durumu
+            const durum = ortalama >= 50 ? "Geçti" : "Kaldı";
+
+            // Hesaplanan değerleri HTML içindeki <span> etiketlerine yazdırıyoruz
+            document.getElementById('sonucAd').innerText = ad;
+            document.getElementById('sonucOrt').innerText = ortalama.toFixed(2); // Virgülden sonra 2 hane
+            document.getElementById('sonucHarf').innerText = harf;
+            document.getElementById('sonucDurum').innerText = durum;
+            
+            // Gizli olan sonuç kutusunu görünür yapıyoruz
+            document.getElementById('notSonuc').classList.remove('hidden');
+        }
+
+        // --- Uygulama 2: Birim Dönüştürücü Mantığı ---
+        function hesaplaDonusum() {
+            const deger = parseFloat(document.getElementById('donusumDeger').value);
+            const tip = document.getElementById('donusumTipi').value;
+
+            if (isNaN(deger)) {
+                alert("Lütfen dönüştürülecek geçerli bir sayı gir!");
+                return;
+            }
+
+            let sonuc = 0;
+            
+            // Seçilen tipe göre işlem yap
+            if (tip === "cToF") {
+                sonuc = (deger * 9/5) + 32;
+            } else if (tip === "mToKm") {
+                sonuc = deger / 1000;
+            } else if (tip === "kgToG") {
+                sonuc = deger * 1000;
+            }
+
+            // Sonucu HTML'e yazdır ve kutuyu göster
+            document.getElementById('sonucDeger').innerText = sonuc.toLocaleString(); 
+            document.getElementById('donusumSonuc').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
