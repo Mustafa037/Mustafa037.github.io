@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Not Hesaplama - Mustafa Sarı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="lab-position.html">Position</a></li>
+            <li><a href="lab-not.html">Not Hesaplama</a></li>
+            <li><a href="lab-birim.html">Birim Çeviri</a></li>
+        </ul>
+    </nav>
+
+    <main class="js-lab-container">
+        <section class="js-card">
+            <h2>Öğrenci Not Hesaplama</h2>
+            
+            <div class="form-group">
+                <input type="text" id="ogrAd" placeholder="Örn: Filiz Akın">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ogrVize" placeholder="Vize Notu">
+            </div>
+            <div class="form-group">
+                <input type="number" id="ogrFinal" placeholder="Final Notu">
+            </div>
+            
+            <button class="js-btn btn-gray" onclick="hesaplaNot()">Hesapla</button>
+            
+            <div id="notSonuc" class="result-box gray-bg hidden">
+                <h3 id="sonucAd"></h3>
+                <p>Ortalama: <span id="sonucOrt"></span></p>
+                <p>Harf Notu: <span id="sonucHarf"></span></p>
+                <p>Durum: <span id="sonucDurum"></span></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2026 Mustafa Sarı | Web Programlama Dersi</p>
+    </footer>
+
+    <script>
+        function hesaplaNot() {
+            const ad = document.getElementById('ogrAd').value;
+            const vize = parseFloat(document.getElementById('ogrVize').value);
+            const final = parseFloat(document.getElementById('ogrFinal').value);
+
+            if (!ad || isNaN(vize) || isNaN(final)) {
+                alert("Lütfen tüm alanları eksiksiz doldur!");
+                return;
+            }
+
+            const ortalama = (vize * 0.4) + (final * 0.6);
+            let harf = "";
+            
+            if (ortalama >= 90) harf = "AA";
+            else if (ortalama >= 85) harf = "BA";
+            else if (ortalama >= 80) harf = "BB";
+            else if (ortalama >= 75) harf = "CB";
+            else if (ortalama >= 70) harf = "CC";
+            else if (ortalama >= 65) harf = "DC";
+            else if (ortalama >= 60) harf = "DD";
+            else if (ortalama >= 50) harf = "FD";
+            else harf = "FF";
+
+            const durum = ortalama >= 50 ? "Geçti" : "Kaldı";
+
+            document.getElementById('sonucAd').innerText = ad;
+            document.getElementById('sonucOrt').innerText = ortalama.toFixed(2);
+            document.getElementById('sonucHarf').innerText = harf;
+            document.getElementById('sonucDurum').innerText = durum;
+            
+            document.getElementById('notSonuc').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
