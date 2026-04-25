@@ -1,134 +1,128 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hafta 7 Bootstrap Uygulaması</title>
-    
+    <title>Hafta 7 - Etkinlik Kayıt</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="styles/hafta7.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Mustafa Sarı</a>
+            <a class="navbar-brand" href="index.html">Ana Sayfa</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="hafta7.html">Etkinlik Kayıt</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Etkinlikler</a>
+                    </li>
                 </ul>
-                <button id="themeToggle" class="btn btn-outline-light">🌙 Koyu Tema</button>
+                <button id="themeToggleBtn" class="btn btn-outline-secondary">Tema Değiştir</button>
             </div>
         </div>
     </nav>
 
-    <header class="bg-light p-5 text-center hero-section">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Yapay Zeka ve Gelecek Zirvesi</h1>
-            <p class="lead mt-3">Teknoloji dünyasının liderleriyle buluşmaya hazır mısınız? Sınırlı kontenjan için hemen yerinizi ayırtın.</p>
-            <div class="mt-4">
-                <a href="#kayitFormuAlani" class="btn btn-primary btn-lg me-2">Hemen Başvur</a>
-                <a href="#detaylar" class="btn btn-secondary btn-lg">Detayları İncele</a>
+    <div class="container mt-4">
+        <div class="p-5 text-center bg-body-tertiary rounded-3 shadow-sm">
+            <h1 class="text-body-emphasis">Bahar Şenliği Etkinlik Kaydı</h1>
+            <p class="lead text-muted">
+                Üniversitemizin düzenlediği bahar şenliği etkinliklerine katılmak için aşağıdan ilgi alanınıza uygun olanı seçebilir ve kaydınızı tamamlayabilirsiniz.
+            </p>
+            <div class="d-inline-flex gap-2 mb-5">
+                <a href="#kayit-formu" class="btn btn-primary btn-lg px-4 rounded-pill">Hemen Kaydol</a>
+                <a href="#etkinlikler" class="btn btn-outline-secondary btn-lg px-4 rounded-pill">Daha Fazla Bilgi</a>
             </div>
         </div>
-    </header>
+    </div>
 
-    <main class="container my-5">
-        
-        <div id="detaylar" class="row g-4 mb-5">
+    <div id="etkinlikler" class="container mt-5">
+        <h2 class="text-center mb-4">Etkinlik Kategorileri</h2>
+        <div class="row g-4">
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Uzman Konuşmacılar</h5>
-                        <p class="card-text">Sektörün önde gelen mühendisleri ve girişimcileri ile birebir tanışma ve tecrübelerinden faydalanma fırsatı.</p>
+                        <h5 class="card-title">Yazılım Hackathonu</h5>
+                        <p class="card-text">48 saatlik kesintisiz kodlama maratonunda sınırlarını zorla ve ödülleri kazan.</p>
+                        <a href="#kayit-formu" class="btn btn-sm btn-primary">Seç</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Uygulamalı Atölyeler</h5>
-                        <p class="card-text">Teorikten ziyade pratiğe dayalı, bilgisayar başında gerçek dünya problemlerini çözeceğimiz lab seansları.</p>
+                        <h5 class="card-title">Siber Güvenlik CTF</h5>
+                        <p class="card-text">Bayrağı yakala yarışmasında sistem zafiyetlerini bul ve güvenliği sağla.</p>
+                        <a href="#kayit-formu" class="btn btn-sm btn-primary">Seç</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
-                        <h5 class="card-title">Networking Fırsatı</h5>
-                        <p class="card-text">Farklı üniversitelerden gelen öğrenciler ve şirket temsilcileri ile kariyer ağınızı genişletin.</p>
+                        <h5 class="card-title">E-Spor Turnuvası</h5>
+                        <p class="card-text">Takımını kur, popüler oyunlarda şampiyonluk için mücadele et.</p>
+                        <a href="#kayit-formu" class="btn btn-sm btn-primary">Seç</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row" id="kayitFormuAlani">
-            <div class="col-lg-8 mx-auto">
+    <div id="kayit-formu" class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <div class="card shadow">
                     <div class="card-header bg-primary text-white">
                         <h4 class="mb-0">Etkinlik Başvuru Formu</h4>
                     </div>
                     <div class="card-body">
-                        <form id="basvuruFormu">
+                        <form id="applicationForm">
                             <div class="mb-3">
-                                <label for="ad" class="form-label">Adınız Soyadınız</label>
-                                <input type="text" class="form-control" id="ad" placeholder="Örn: Asaf Karataş">
+                                <label for="fullName" class="form-label">Adınız Soyadınız</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Örn: Arda Sarıoğlu">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">E-posta Adresiniz</label>
-                                <input type="email" class="form-control" id="email" placeholder="ornek@mail.com">
+                                <input type="email" class="form-control" id="email" placeholder="ornek@ogrenci.edu.tr">
                             </div>
                             <div class="mb-3">
-                                <label for="bolum" class="form-label">Bölümünüz</label>
-                                <select class="form-select" id="bolum">
-                                    <option value="">Seçiniz...</option>
-                                    <option value="Bilgisayar Mühendisliği">Bilgisayar Mühendisliği</option>
-                                    <option value="Yazılım Mühendisliği">Yazılım Mühendisliği</option>
-                                    <option value="Diğer">Diğer</option>
+                                <label for="eventSelect" class="form-label">Katılmak İstediğiniz Etkinlik</label>
+                                <select class="form-select" id="eventSelect">
+                                    <option value="" selected>Seçiniz...</option>
+                                    <option value="Yazılım Hackathonu">Yazılım Hackathonu</option>
+                                    <option value="Siber Güvenlik CTF">Siber Güvenlik CTF</option>
+                                    <option value="E-Spor Turnuvası">E-Spor Turnuvası</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="mesaj" class="form-label">Neden Katılmak İstiyorsunuz?</label>
-                                <textarea class="form-control" id="mesaj" rows="3"></textarea>
+                                <label for="notes" class="form-label">Eklemek İstedikleriniz</label>
+                                <textarea class="form-control" id="notes" rows="3"></textarea>
                             </div>
-                            <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" id="onay">
-                                <label class="form-check-label" for="onay">
-                                    Katılım şartlarını okudum ve onaylıyorum.
-                                </label>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="termsCheck">
+                                <label class="form-check-label" for="termsCheck">Katılım şartlarını okudum ve kabul ediyorum.</label>
                             </div>
                             <button type="submit" class="btn btn-success w-100">Başvuruyu Tamamla</button>
                         </form>
                     </div>
                 </div>
 
-                <div id="ozetAlani" class="alert alert-success mt-4 d-none" role="alert">
-                    <h4 class="alert-heading">Başvurunuz Alındı!</h4>
-                    <p>Harika, kaydınızı başarıyla oluşturduk. İşte başvuru özetiniz:</p>
-                    <hr>
-                    <p class="mb-1"><strong>Ad Soyad:</strong> <span id="ozetAd"></span></p>
-                    <p class="mb-1"><strong>E-posta:</strong> <span id="ozetEmail"></span></p>
-                    <p class="mb-1"><strong>Bölüm:</strong> <span id="ozetBolum"></span></p>
-                    <p class="mb-0"><strong>Mesajınız:</strong> <span id="ozetMesaj"></span></p>
-                </div>
-
+                <div id="resultArea" class="mt-4"></div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
+    <footer class="bg-body-tertiary text-center text-muted py-4 mt-auto">
         <div class="container">
-            <p class="mb-0">2026 &copy; Mustafa Sarı | Web Programlama Dersi - Bootstrap & JS Uygulaması</p>
+            <p class="mb-0">© 2024 GitHub Pages Laboratuvar Uygulaması - Hafta 7</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script src="scripts/hafta7.js"></script>
 </body>
 </html>
