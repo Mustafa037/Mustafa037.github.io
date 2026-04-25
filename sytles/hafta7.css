@@ -1,0 +1,38 @@
+/* styles/hafta7.css */
+
+/* Sayfa geçişlerinde yumuşak bir kaydırma efekti */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Kartların üzerine gelindiğinde hafif bir büyüme efekti (Bootstrap'te hazırda yok) */
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Form alanlarına tıklandığında (focus) oluşacak çerçeve rengini kişiselleştirme */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Sonuç alanının (özet ekranı) daha belirgin olması için */
+#resultArea {
+    margin-top: 30px;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Footer'ın her zaman en altta kalmasını garantilemek için (isteğe bağlı) */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+}
